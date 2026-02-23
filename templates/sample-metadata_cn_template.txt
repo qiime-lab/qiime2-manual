@@ -1,0 +1,5 @@
+#SampleID	IS	Group	Description
+#q2:types	categorical	categorical	categorical
+SampleA_IS	yes	treatment	Sample A with IS
+SampleB_IS	yes	control	Sample B with IS
+SampleC	no	treatment	Sample C without IS

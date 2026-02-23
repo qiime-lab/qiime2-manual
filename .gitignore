@@ -1,0 +1,43 @@
+# QIIME 2 artifacts
+*.qza
+*.qzv
+
+# Sequence data
+*.fastq
+*.fastq.gz
+*.fasta
+*.fna
+*.fq
+
+# BIOM files
+*.biom
+
+# Large reference databases
+classifier/*.zip
+classifier/SILVA_*
+classifier/gg_*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Python
+__pycache__/
+*.pyc
+.env/
+
+# Temporary
+tmp/
+temp/

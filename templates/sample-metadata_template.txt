@@ -1,0 +1,5 @@
+#SampleID	BarcodeSequence	LinkerPrimerSequence	newID	IS	Group	Description
+#q2:types	categorical	categorical	categorical	categorical	categorical	categorical
+SP01_S1	ACGTACGT	AGRGTTTGATYMTGGCTCAG	SampleA_IS	yes	treatment	Sample A with IS
+SP02_S2	TGCATGCA	AGRGTTTGATYMTGGCTCAG	SampleB_IS	yes	control	Sample B with IS
+SP03_S3	GCTAGCTA	AGRGTTTGATYMTGGCTCAG	SampleC	no	treatment	Sample C without IS

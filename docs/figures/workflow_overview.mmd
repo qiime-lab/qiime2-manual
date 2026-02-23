@@ -1,0 +1,31 @@
+flowchart TD
+    A["📁 FASTQ データ<br/>(MiSeq Casava 1.8)"] --> B["1. データ読み込み<br/>qiime tools import"]
+    B --> C["2. DADA2 デノイジング<br/>qiime dada2 denoise-paired"]
+    C --> D["3. QC結果の可視化"]
+    D --> E["4. サンプル名の変更"]
+    E --> F["5. Feature table 作成"]
+    F --> G{IS あり?}
+    
+    G -->|No| H["6. 系統樹作成<br/>MAFFT + FastTree"]
+    H --> I["7. α/β多様性解析"]
+    I --> J["8. Rarefaction curve"]
+    
+    G -->|Yes| K["9-10. 分類器作成 + 種同定"]
+    K --> L["11. IS除去"]
+    L --> M["12-14. 系統樹 + 多様性 + Rarefaction"]
+    L --> N["16. IS検量線 + 絶対定量"]
+    
+    F --> O["🆕 18. R/phyloseq<br/>エクスポート"]
+    O --> P["R で下流解析<br/>ggplot2, DESeq2,<br/>ANCOM-BC"]
+    
+    J --> Q["19. 統計検定<br/>PERMANOVA"]
+    M --> Q
+    
+    Q --> R["📊 結果の可視化"]
+    P --> R
+    
+    style A fill:#fff3e0,stroke:#e65100
+    style O fill:#e1f5fe,stroke:#0277bd
+    style P fill:#e1f5fe,stroke:#0277bd
+    style R fill:#e8f5e9,stroke:#2e7d32
+    style N fill:#fce4ec,stroke:#c62828

@@ -1,0 +1,11 @@
+flowchart TD
+    A["1. IS添加<br/>Salinibacterium: 1.5×10⁷/μL<br/>Rhizobium: 5×10⁷/μL"] --> B["2. シーケンス"]
+    B --> C["3. ISのリード数を抽出"]
+    C --> D["4. 検量線作成<br/>コピー数(x) vs リード数(y)<br/>LINEST関数 or 散布図"]
+    D --> E["5. 傾きを求める"]
+    E --> F["6. コピー数 = リード数 ÷ 傾き"]
+    F --> G["7. 重量補正<br/>÷ 実測重量(mg) × 1000"]
+    G --> H["📊 Normalized 16S rRNA<br/>gene abundance<br/>(copies/g dry feces)"]
+    
+    style A fill:#e1f5fe
+    style H fill:#e8f5e9

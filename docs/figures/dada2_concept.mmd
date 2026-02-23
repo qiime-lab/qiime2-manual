@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph input["入力: 生シーケンスリード"]
+        A["リード群<br/>(エラーを含む)"]
+    end
+    
+    subgraph old["旧手法: OTU クラスタリング"]
+        B["97%類似度で<br/>クラスタリング"] --> C["OTU<br/>(異なる種が混在)"]
+    end
+    
+    subgraph new["新手法: DADA2 デノイジング"]
+        D["エラーモデル学習"] --> E["統計的にエラー補正"]
+        E --> F["ASV<br/>(真のユニーク配列)"]
+    end
+    
+    A --> B
+    A --> D
+    
+    style C fill:#ffebee,stroke:#c62828
+    style F fill:#e8f5e9,stroke:#2e7d32
+    style old fill:#fff3e0
+    style new fill:#e1f5fe

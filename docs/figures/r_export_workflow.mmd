@@ -1,0 +1,29 @@
+flowchart LR
+    subgraph Q2["QIIME 2"]
+        A["table.qza"] 
+        B["taxonomy.qza"]
+        C["rooted-tree.qza"]
+        D["metadata.txt"]
+    end
+    
+    subgraph Bridge["変換"]
+        E["qiime2R<br/>パッケージ"]
+    end
+    
+    subgraph R["R / Bioconductor"]
+        F["phyloseq<br/>オブジェクト"]
+        F --> G["ggplot2<br/>可視化"]
+        F --> H["DESeq2<br/>差次解析"]
+        F --> I["ANCOM-BC<br/>組成解析"]
+        F --> J["vegan<br/>統計検定"]
+    end
+    
+    A --> E
+    B --> E
+    C --> E
+    D --> E
+    E --> F
+    
+    style Q2 fill:#fff3e0
+    style Bridge fill:#f3e5f5
+    style R fill:#e1f5fe
