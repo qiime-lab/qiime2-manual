@@ -2,7 +2,7 @@
 
 [![QIIME 2](https://img.shields.io/badge/QIIME%202-2026.1-blue)](https://qiime2.org)
 [![SILVA](https://img.shields.io/badge/SILVA-138.2-green)](https://www.arb-silva.de/)
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![License: All Rights Reserved](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg)](LICENSE)
 
 初学者が QIIME 2 による 16S rRNA アンプリコンシーケンス解析を学ぶための包括的日本語マニュアル
 
@@ -10,8 +10,8 @@
 
 本マニュアルは、QIIME 2 を使ったマイクロバイオーム解析をこれから学ぶ人のためのガイドです。各解析ステップが **何をしているのか**・**なぜ必要なのか**・**どのような選択肢があるのか** を、メリット・デメリットとともに解説します。内部標準（IS）を用いた絶対定量ワークフローを含む、ラボで実際に使用されている解析パイプラインも詳細に記載しています。
 
-> **Original manual by:** 佐藤翼（based on work by 月見友哉）
-> **Updated & published by:** [Rhizobium-gits](https://github.com/Rhizobium-gits)
+> **著者:** 月見友哉, 佐藤翼
+> **公開:** [Rhizobium-gits](https://github.com/Rhizobium-gits)
 
 ## 対応環境
 
@@ -119,10 +119,12 @@ QIIME 2 を使用した研究を発表する際は、以下を引用してくだ
 - DADA2: Callahan, B.J., et al. (2016). DADA2: High-resolution sample inference from Illumina amplicon data. *Nature Methods*, 13, 581–583.
 - q2-boots（ブートストラップ多様性を使用した場合）: Keefe, C.R., et al. (2025). Bootstrapped rarefaction outperforms single rarefaction for alpha and beta diversity estimation. *F1000Research*.
 
-## ライセンス
+## 著作権
 
-本マニュアルは [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) ライセンスの下で公開されています。
+Copyright (c) 2020-2026 月見友哉, 佐藤翼. All Rights Reserved.
+
+本マニュアルの全部または一部の無断複製・転載・再配布を禁止します。個人の学習目的での閲覧および参照は許可されます。研究・教育目的での引用は、適切な出典表示を行う限りにおいて許可されます。詳細は [LICENSE](LICENSE) を参照してください。
 
 ## コントリビューション
 
-Issue や Pull Request は歓迎します。改善提案やエラー報告は [Issues](../../issues) からお願いします。
+Issue による改善提案やエラー報告は歓迎します → [Issues](../../issues)

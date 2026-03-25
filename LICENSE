@@ -1,21 +1,24 @@
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License
+All Rights Reserved
 
-Copyright (c) 2026 Rhizobium-gits
+Copyright (c) 2020-2026 月見友哉 (Tomoya Tsukimi), 佐藤翼 (Tsubasa Sato)
 
-Original manual by 佐藤翼 (Based on work by 月見友哉)
+本マニュアルに含まれるすべてのテキスト、図表、コード例、およびその他のコンテンツは、
+著作権法により保護されています。
 
-This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
-4.0 International License. To view a copy of this license, visit
-http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons,
-PO Box 1866, Mountain View, CA 94042, USA.
+以下の行為は、著作権者の書面による事前の許可なく禁止されます：
 
-You are free to:
-  Share — copy and redistribute the material in any medium or format
-  Adapt — remix, transform, and build upon the material
+  - 本マニュアルの全部または一部の複製、転載、再配布
+  - 本マニュアルの翻訳、改変、二次的著作物の作成
+  - 本マニュアルの商用利用
+  - 本マニュアルの内容を利用した教材・書籍等の作成
 
-Under the following terms:
-  Attribution — You must give appropriate credit, provide a link to the license,
-                and indicate if changes were made.
-  NonCommercial — You may not use the material for commercial purposes.
-  ShareAlike — If you remix, transform, or build upon the material, you must
-               distribute your contributions under the same license as the original.
+個人の学習目的での閲覧および参照は許可されます。
+研究・教育目的での引用は、適切な出典表示を行う限りにおいて許可されます。
+
+引用時の出典表示例：
+  月見友哉, 佐藤翼. "QIIME 2 解析マニュアル". https://github.com/qiime-lab/qiime2-manual
+
+お問い合わせ：
+  GitHub Issues: https://github.com/qiime-lab/qiime2-manual/issues
+
+THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
