@@ -1,6 +1,6 @@
 # 22. 差次的存在量解析（Differential Abundance Analysis）
 
-> **バージョン**: 本章は QIIME 2 2026.5 に対応しています。ANCOM-BC2 は QIIME 2 2025.4 以降で利用可能です。
+> **バージョン**: 本章は QIIME 2 2026.1 に対応しています。ANCOM-BC2 は QIIME 2 2025.4 以降で利用可能です。
 
 ## 概要
 

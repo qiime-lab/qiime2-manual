@@ -16,7 +16,7 @@ QIIME 2 のインストール方法は複数あり、それぞれにメリット
 
 ## 0.1 QIIME 2 のインストール
 
-> **対応バージョン**: QIIME 2 2026.5 (amplicon distribution)
+> **対応バージョン**: QIIME 2 2026.1 (amplicon distribution)
 
 ### macOS（conda）
 
@@ -24,23 +24,23 @@ Apple Silicon (M1/M2/M3/M4) と Intel の両方に対応。
 
 > **2026.4 以降の変更点**: Apple Silicon Mac で Rosetta 2 を使用せずにネイティブ（arm64）で動作するようになった。以前のバージョンでは `CONDA_SUBDIR=osx-64` を設定してx86_64エミュレーションでインストールする必要があったが、2026.4 以降は不要である。
 
-> **ディストリビューション名の変更（2026.4〜）**: conda 環境名が `amplicon` から `qiime2` に変更される予定である（例: `qiime2-amplicon-2026.1` → `qiime2-2026.5`）。本マニュアルでは 2026.5 の命名規則を使用する。
+> **ディストリビューション名の変更（2026.4〜）**: conda 環境名が `amplicon` から `qiime2` に変更される予定である（例: `qiime2-amplicon-2026.1` → `qiime2-2026.1`）。本マニュアルでは 2026.1 の命名規則を使用する。
 
 ```bash
 # Miniconda のインストール（未インストールの場合）
 # https://docs.conda.io/en/latest/miniconda.html からダウンロード
 
-# QIIME 2 2026.5 のインストール
+# QIIME 2 2026.1 のインストール
 # Apple Silicon Mac の場合（arm64 ネイティブ、Rosetta 2 不要）
-wget https://data.qiime2.org/distro/qiime2/qiime2-2026.5-py312-osx-arm64-conda.yml
-conda env create -n qiime2-2026.5 --file qiime2-2026.5-py312-osx-arm64-conda.yml
+wget https://data.qiime2.org/distro/qiime2/qiime2-2026.1-py312-osx-arm64-conda.yml
+conda env create -n qiime2-2026.1 --file qiime2-2026.1-py312-osx-arm64-conda.yml
 
 # Intel Mac の場合
-wget https://data.qiime2.org/distro/qiime2/qiime2-2026.5-py312-osx-conda.yml
-conda env create -n qiime2-2026.5 --file qiime2-2026.5-py312-osx-conda.yml
+wget https://data.qiime2.org/distro/qiime2/qiime2-2026.1-py312-osx-conda.yml
+conda env create -n qiime2-2026.1 --file qiime2-2026.1-py312-osx-conda.yml
 
 # 環境の有効化
-conda activate qiime2-2026.5
+conda activate qiime2-2026.1
 
 # 動作確認
 qiime --version
@@ -49,9 +49,9 @@ qiime --version
 ### Linux（conda）
 
 ```bash
-wget https://data.qiime2.org/distro/qiime2/qiime2-2026.5-py312-linux-conda.yml
-conda env create -n qiime2-2026.5 --file qiime2-2026.5-py312-linux-conda.yml
-conda activate qiime2-2026.5
+wget https://data.qiime2.org/distro/qiime2/qiime2-2026.1-py312-linux-conda.yml
+conda env create -n qiime2-2026.1 --file qiime2-2026.1-py312-linux-conda.yml
+conda activate qiime2-2026.1
 ```
 
 ### Windows（WSL2）
@@ -78,8 +78,8 @@ Docker を使うと、ホストOSの環境に依存しない隔離された QIIM
 
 ```bash
 # 標準コンテナ（CLI使用）
-docker pull quay.io/qiime2/amplicon:2026.5
-docker run -it -v $(pwd):/data quay.io/qiime2/amplicon:2026.5 bash
+docker pull quay.io/qiime2/amplicon:2026.1
+docker run -it -v $(pwd):/data quay.io/qiime2/amplicon:2026.1 bash
 ```
 
 #### Workshop コンテナ（Jupyter Lab 付き）
@@ -88,8 +88,8 @@ QIIME 2 公式のワークショップ用コンテナには Jupyter Lab と CLI 
 
 ```bash
 # Workshop コンテナ（Jupyter Lab + QIIME 2 CLI）
-docker pull quay.io/qiime2/workshop:2026.5
-docker run -it -p 8888:8888 -v $(pwd):/data quay.io/qiime2/workshop:2026.5
+docker pull quay.io/qiime2/workshop:2026.1
+docker run -it -p 8888:8888 -v $(pwd):/data quay.io/qiime2/workshop:2026.1
 
 # ブラウザで http://localhost:8888 にアクセス
 ```
@@ -143,7 +143,7 @@ Sample_B	no	control
 
 ### メタデータファイルのルール
 
-> 参考: [Metadata in QIIME 2](https://docs.qiime2.org/2026.5/tutorials/metadata/)
+> 参考: [Metadata in QIIME 2](https://docs.qiime2.org/2026.1/tutorials/metadata/)
 
 - 空白文字（スペースなど）は無視される。`"gut"` と `"gut "` は同じ意味
 - 行頭が `#` の行は無視される（コメントとして利用可能）
