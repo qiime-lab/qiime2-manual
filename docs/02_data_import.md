@@ -1,6 +1,6 @@
 # 1. データの読み込み
 
-> 参考: [QIIME 2 importing tutorial](https://docs.qiime2.org/2026.5/tutorials/importing/)
+> 参考: [QIIME 2 importing tutorial](https://docs.qiime2.org/2026.1/tutorials/importing/)
 > 参考: [FASTQ format](https://en.wikipedia.org/wiki/FASTQ_format)
 
 ## データインポートの概要

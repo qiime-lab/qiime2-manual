@@ -1,6 +1,6 @@
 # QIIME 2 解析マニュアル
 
-[![QIIME 2](https://img.shields.io/badge/QIIME%202-2026.5-blue)](https://qiime2.org)
+[![QIIME 2](https://img.shields.io/badge/QIIME%202-2026.1-blue)](https://qiime2.org)
 [![SILVA](https://img.shields.io/badge/SILVA-138.2-green)](https://www.arb-silva.de/)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
@@ -17,7 +17,7 @@
 
 | 項目 | バージョン |
 |------|-----------|
-| QIIME 2 | 2026.5 (qiime2 distribution) |
+| QIIME 2 | 2026.1 (qiime2 distribution) |
 | リファレンスDB | SILVA 138.2 (SSURef NR99) |
 | Python | 3.10 |
 | OS | macOS (Intel/Apple Silicon), Linux, Windows (WSL2) |
@@ -63,10 +63,10 @@ docs/
 ## クイックスタート
 
 ```bash
-# QIIME 2 2026.5 のインストール（macOS/Linux）
-wget https://data.qiime2.org/distro/qiime2/qiime2-2026.5-py310-linux-conda.yml
-conda env create -n qiime2-2026.5 --file qiime2-2026.5-py310-linux-conda.yml
-conda activate qiime2-2026.5
+# QIIME 2 2026.1 のインストール（macOS/Linux）
+wget https://data.qiime2.org/distro/qiime2/qiime2-2026.1-py310-linux-conda.yml
+conda env create -n qiime2-2026.1 --file qiime2-2026.1-py310-linux-conda.yml
+conda activate qiime2-2026.1
 ```
 
 ## 解析フローチャート
@@ -96,9 +96,9 @@ flowchart TD
 
 ## 旧マニュアルからの主な変更点
 
-| 項目 | 旧マニュアル (2019.7) | v2.0.0 (2026.1) | v2.1.0 (2026.5) |
+| 項目 | 旧マニュアル (2019.7) | v2.0.0 (2026.1) | v2.1.0 (2026.1) |
 |------|----------------------|-----------------|-----------------|
-| QIIME 2 バージョン | 2019.7 | 2026.1 | 2026.5 |
+| QIIME 2 バージョン | 2019.7 | 2026.1 | 2026.1 |
 | リファレンスDB | SILVA 132 | SILVA 138.2 | SILVA 138.2（SILVA 144 準備中） |
 | DB 取得方法 | 手動ダウンロード | RESCRIPt プラグイン | RESCRIPt（新アクション追加） |
 | Windows 環境 | VirtualBox | WSL2 | WSL2 |

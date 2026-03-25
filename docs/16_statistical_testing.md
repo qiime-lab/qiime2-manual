@@ -1,6 +1,6 @@
 # 19. 統計検定・差次解析
 
-> **バージョン**: 本章は QIIME 2 2026.5 に対応しています。
+> **バージョン**: 本章は QIIME 2 2026.1 に対応しています。
 
 > 参考: [beta-group-significance](https://docs.qiime2.org/2026.1/plugins/available/diversity/beta-group-significance/)
 

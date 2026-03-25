@@ -1,6 +1,6 @@
 # 4. サンプル名の変更
 
-> 参考: [the metadata tutorial](https://docs.qiime2.org/2026.5/tutorials/metadata/)
+> 参考: [the metadata tutorial](https://docs.qiime2.org/2026.1/tutorials/metadata/)
 
 ---
 
