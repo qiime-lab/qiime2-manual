@@ -4,11 +4,11 @@
 [![SILVA](https://img.shields.io/badge/SILVA-138.2-green)](https://www.arb-silva.de/)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-16S rRNA アンプリコンシーケンス解析のための包括的マニュアル（日本語）
+初学者が QIIME 2 による 16S rRNA アンプリコンシーケンス解析を学ぶための包括的日本語マニュアル
 
 ## 概要
 
-本マニュアルは、QIIME 2 による 16S rRNA 解析の全体像を紹介し、各手法のメリット・デメリットを解説する ことを目的としたものです。内部標準（IS）を用いた絶対定量ワークフローを含む、ラボで実際に使用されている解析パイプラインを詳細に記載しています。
+本マニュアルは、QIIME 2 を使ったマイクロバイオーム解析をこれから学ぶ人のためのガイドです。各解析ステップが **何をしているのか**・**なぜ必要なのか**・**どのような選択肢があるのか** を、メリット・デメリットとともに解説します。内部標準（IS）を用いた絶対定量ワークフローを含む、ラボで実際に使用されている解析パイプラインも詳細に記載しています。
 
 > **Original manual by:** 佐藤翼（based on work by 月見友哉）
 > **Updated & published by:** [Rhizobium-gits](https://github.com/Rhizobium-gits)
