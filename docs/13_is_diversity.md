@@ -1,6 +1,14 @@
-# 12–14. IS除去後の系統樹作成・多様性解析・Rarefaction
+# 13. IS除去後の系統樹作成・多様性解析・Rarefaction
 
-IS を除去した後のサンプルに対して系統樹作成、多様性解析、rarefaction を行う。コマンドは基本的にIS除去前と同じだが、入出力パスが `filterIS/` 以下になる。
+## 概要
+
+IS除去後のサンプルに対して系統樹作成・多様性解析・rarefactionを実施する。IS由来のASVが除外されているため、真の細菌叢組成に基づいた多様性指標が得られる。コマンドは基本的にIS除去前（[第8章](08_diversity.md)・[第9章](09_rarefaction.md)）と同じだが、入出力パスが `filterIS/` 以下になる。
+
+### IS除去前後の比較の重要性
+
+IS除去前後でα多様性やβ多様性がどの程度変化するかを確認することで、IS添加が解析に与える影響を評価できる。理想的にはIS由来ASVのリード数がサンプル全体の一定割合（通常5〜15%程度）に収まっており、IS除去後も α多様性の順位関係や β多様性のクラスタリングパターンが大きく変わらないことを確認する。もし除去前後で PCoA の構造が大きく変化する場合は、IS添加量のばらつきや意図しないISのキャリーオーバーを疑う。
+
+---
 
 ## 12. 系統樹作成
 
@@ -40,6 +48,19 @@ qiime diversity core-metrics-phylogenetic \
   --m-metadata-file sample-metadata_cn.txt \
   --output-dir filterIS/core-metrics-results
 ```
+
+> **補足 — q2-boots による代替**: QIIME 2 では `q2-boots` プラグインを使ってブートストラップ法によるリサンプリングを行う方法も利用可能である。`q2-boots` は単回のrarефactionに依存せず複数回のリサンプリング結果を平均するため、統計的にロバストな多様性指標が得られる。サンプル数が少なく rarefaction の安定性が懸念される場合は検討する。
+>
+> ```bash
+> # q2-boots を使った代替（要 q2-boots インストール）
+> qiime boots core-metrics-phylogenetic \
+>   --i-table filterIS/table_filterIS.qza \
+>   --i-phylogeny filterIS/phylogeny/rooted-tree_filterIS.qza \
+>   --p-sampling-depth 19658 \
+>   --p-n 100 \
+>   --m-metadata-file sample-metadata_cn.txt \
+>   --output-dir filterIS/core-metrics-boots
+> ```
 
 ### 13.3 Chao1 の算出
 

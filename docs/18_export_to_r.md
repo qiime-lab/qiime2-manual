@@ -1,8 +1,26 @@
-# 18. R / phyloseq へのエクスポート（NEW）
+# 18. R / phyloseq へのエクスポート
 
-> **本セクションは新規追加**。QIIME 2 でASVテーブルと分類結果まで生成した後、下流の解析をRで行うハイブリッドワークフローを記載する。
+## 概要：QIIME 2 と R のハイブリッドワークフロー
 
-## なぜRで解析するのか
+QIIME 2 は前処理から多様性解析・統計検定まで一貫したパイプラインを提供しているが、論文用の高品質な図の作成や QIIME 2 に未実装の手法を使いたい場合は、R との連携が有効な選択肢となる。
+
+### QIIME 2 完結 vs R 連携 の比較
+
+| 観点 | QIIME 2 完結 | R 連携 |
+|------|-------------|--------|
+| 可視化 | 組み込みビジュアライザー（カスタマイズ限定） | ggplot2 による論文品質の図 |
+| 統計 | PERMANOVA, ANCOM-BC2（近年大幅強化） | vegan, DESeq2, ALDEx2, R エコシステム全体 |
+| 再現性 | Provenance 自動追跡 | スクリプト管理（ユーザー責任） |
+| 学習コスト | 中程度（CLI 操作） | 高（R プログラミング必要） |
+| 適した場面 | ルーティン解析・探索的解析 | カスタム解析・論文用図の作成 |
+
+> **Note**: QIIME 2 の統計機能は近年大幅に強化されており（ANCOM-BC2、q2-boots 等）、多くの解析は QIIME 2 内で完結できるようになっている。R へのエクスポートは、論文用の高品質な図の作成や、QIIME 2 に未実装の手法を使う場合に検討する。
+
+---
+
+> **本セクション**: QIIME 2 で ASV テーブルと分類結果まで生成した後、下流の解析を R で行うハイブリッドワークフローを記載する。
+
+## なぜ R で解析するのか
 
 ```mermaid
 flowchart TD
@@ -11,21 +29,21 @@ flowchart TD
         B --> C[ASV テーブル]
         C --> D[分類器で種同定]
     end
-    
+
     subgraph R["R（下流解析）"]
         E[phyloseq] --> F[ggplot2 可視化]
         E --> G[DESeq2 差次解析]
         E --> H[vegan 統計検定]
         E --> I[ANCOM-BC 組成解析]
     end
-    
+
     D -->|qiime2R / export| E
-    
+
     style QIIME2 fill:#fff3e0
     style R fill:#e1f5fe
 ```
 
-Rで解析を行うメリット：
+R で解析を行うメリット：
 - **ggplot2** による柔軟で美しい可視化
 - **DESeq2 / ANCOM-BC / ALDEx2** などの組成データ解析手法が利用可能
 - **vegan** パッケージによる豊富な統計手法
@@ -34,9 +52,9 @@ Rで解析を行うメリット：
 
 ## 方法A: qiime2R パッケージ（推奨）
 
-`.qza` ファイルをRに直接読み込める。
+`.qza` ファイルを R に直接読み込める。
 
-### R側の準備
+### R 側の準備
 
 ```r
 # qiime2R のインストール（初回のみ）
@@ -91,13 +109,13 @@ qiime tools export \
 ```
 
 ```r
-# R側
+# R 側
 library(phyloseq)
 library(biomformat)
 
 # 読み込み
 biom <- read_biom("export/table.biom")
-otu_table <- otu_table(as(biom_data(biom), "matrix"), taxa_are_rows = TRUE)
+ otu_table <- otu_table(as(biom_data(biom), "matrix"), taxa_are_rows = TRUE)
 
 tax <- read.delim("export/taxonomy.tsv", row.names = 1)
 # 分類階層を列に分割
@@ -150,8 +168,8 @@ plot_bar(ps_rel, fill = "Genus") +
 
 推奨される現代的手法：
 - **ANCOM-BC**: 組成バイアスを補正した差次的存在量解析
-- **ALDEx2**: CLR変換を用いた差次的存在量解析
-- **CLR変換**: centered log-ratio 変換により組成データの問題を軽減
+- **ALDEx2**: CLR 変換を用いた差次的存在量解析
+- **CLR 変換**: centered log-ratio 変換により組成データの問題を軽減
 
 ```r
 # ANCOM-BC の例
