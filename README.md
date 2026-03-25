@@ -1,6 +1,6 @@
 # QIIME 2 解析マニュアル
 
-[![QIIME 2](https://img.shields.io/badge/QIIME%202-2026.1-blue)](https://qiime2.org)
+[![QIIME 2](https://img.shields.io/badge/QIIME%202-2026.5-blue)](https://qiime2.org)
 [![SILVA](https://img.shields.io/badge/SILVA-138.2-green)](https://www.arb-silva.de/)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
@@ -8,16 +8,16 @@
 
 ## 概要
 
-本マニュアルは、QIIME 2 を用いた腸内細菌叢の 16S rRNA 遺伝子解析を **コピー＆ペーストで実行可能** にすることを目指したものです。内部標準（IS）を用いた絶対定量ワークフローを含む、ラボで実際に使用されている解析パイプラインを詳細に記載しています。
+本マニュアルは、QIIME 2 による 16S rRNA 解析の全体像を紹介し、各手法のメリット・デメリットを解説する ことを目的としたものです。内部標準（IS）を用いた絶対定量ワークフローを含む、ラボで実際に使用されている解析パイプラインを詳細に記載しています。
 
-> **Original manual by:** 佐藤翼（based on work by 月見友哉）  
+> **Original manual by:** 佐藤翼（based on work by 月見友哉）
 > **Updated & published by:** [Rhizobium-gits](https://github.com/Rhizobium-gits)
 
 ## 対応環境
 
 | 項目 | バージョン |
 |------|-----------|
-| QIIME 2 | 2026.1 (amplicon distribution) |
+| QIIME 2 | 2026.5 (qiime2 distribution) |
 | リファレンスDB | SILVA 138.2 (SSURef NR99) |
 | Python | 3.10 |
 | OS | macOS (Intel/Apple Silicon), Linux, Windows (WSL2) |
@@ -44,10 +44,12 @@ docs/
 ├── 15_negative_control.md      # ネガティブコントロール除去
 ├── 16_statistical_testing.md   # 統計検定・可視化
 ├── 17_multi_run.md             # マルチラン処理・サンプル結合
-├── 18_export_to_r.md           # R/phyloseqへのエクスポート（NEW）
-├── 19_utilities.md             # ユーティリティ（ファイル名変更等）
-├── 20_provenance.md            # 解析のトレース
-├── 21_troubleshooting.md       # トラブルシューティング（NEW）
+├── 18_export_to_r.md           # R/phyloseqへのエクスポート
+├── 19_utilities.md             # ユーティリティ（q2-fondue、便利コマンド）
+├── 20_provenance.md            # 解析のトレース・再現性
+├── 21_troubleshooting.md       # トラブルシューティング
+├── 22_differential_abundance.md # 差次的存在量解析（ANCOM-BC2）（NEW）
+├── 23_bootstrapped_diversity.md # ブートストラップ多様性解析（q2-boots）（NEW）
 ├── appendix_metadata.md        # Appendix: メタデータ仕様
 ├── appendix_changelog.md       # 変更履歴
 └── figures/                    # 図・ダイアグラム
@@ -60,10 +62,10 @@ docs/
 ## クイックスタート
 
 ```bash
-# QIIME 2 2026.1 のインストール（macOS/Linux）
-wget https://data.qiime2.org/distro/amplicon/qiime2-amplicon-2026.1-py310-linux-conda.yml
-conda env create -n qiime2-2026.1 --file qiime2-amplicon-2026.1-py310-linux-conda.yml
-conda activate qiime2-2026.1
+# QIIME 2 2026.5 のインストール（macOS/Linux）
+wget https://data.qiime2.org/distro/qiime2/qiime2-2026.5-py310-linux-conda.yml
+conda env create -n qiime2-2026.5 --file qiime2-2026.5-py310-linux-conda.yml
+conda activate qiime2-2026.5
 ```
 
 ## 解析フローチャート
@@ -84,7 +86,7 @@ flowchart TD
     D --> L[R/phyloseq<br/>エクスポート]
     L --> M[R で下流解析]
     K --> N[結果の可視化]
-    
+
     style L fill:#e1f5fe
     style M fill:#e1f5fe
     style A fill:#fff3e0
@@ -93,16 +95,19 @@ flowchart TD
 
 ## 旧マニュアルからの主な変更点
 
-| 項目 | 旧マニュアル (2019.7) | 本マニュアル (2026.1) |
-|------|----------------------|----------------------|
-| QIIME 2 バージョン | 2019.7 | 2026.1 |
-| リファレンスDB | SILVA 132 | SILVA 138.2 |
-| DB取得方法 | 手動ダウンロード | RESCRIPt プラグイン |
-| Windows環境 | VirtualBox | WSL2 |
-| macOS | Intel のみ | Intel + Apple Silicon |
-| 下流解析 | QIIME 2 完結 | R/phyloseq連携を追加 |
-| 組成データ解析 | なし | ANCOM-BC, CLR変換の解説 |
-| Provenance | 基本説明 | View改善・エラー検出 |
+| 項目 | 旧マニュアル (2019.7) | v2.0.0 (2026.1) | v2.1.0 (2026.5) |
+|------|----------------------|-----------------|-----------------|
+| QIIME 2 バージョン | 2019.7 | 2026.1 | 2026.5 |
+| リファレンスDB | SILVA 132 | SILVA 138.2 | SILVA 138.2（SILVA 144 準備中） |
+| DB 取得方法 | 手動ダウンロード | RESCRIPt プラグイン | RESCRIPt（新アクション追加） |
+| Windows 環境 | VirtualBox | WSL2 | WSL2 |
+| macOS | Intel のみ | Intel + Apple Silicon | Apple Silicon ネイティブ (2026.4+) |
+| 下流解析 | QIIME 2 完結 | R/phyloseq 連携を追加 | R 連携 + ANCOM-BC2 完結も記載 |
+| 差次的存在量解析 | なし | ANCOM-BC（R 経由） | ANCOM-BC2（QIIME 2 完結） |
+| ブートストラップ多様性 | なし | なし | q2-boots（新章） |
+| Provenance | 基本説明 | View 改善・エラー検出 | Annotation、暗号署名、replay |
+| ディストリビューション名 | — | amplicon | qiime2（2026.4 リブランド） |
+| マニュアル方針 | コマンド集 | コマンド集 + 解説 | 手法紹介 + メリット・デメリット解説 |
 
 ## 引用
 
@@ -111,6 +116,7 @@ QIIME 2 を使用した研究を発表する際は、以下を引用してくだ
 - Bolyen, E., et al. (2019). Reproducible, interactive, scalable and extensible microbiome data science using QIIME 2. *Nature Biotechnology*, 37, 852–857.
 - SILVA: Quast, C., et al. (2013). The SILVA ribosomal RNA gene database project. *Nucleic Acids Research*, 41(D1), D590–D596.
 - DADA2: Callahan, B.J., et al. (2016). DADA2: High-resolution sample inference from Illumina amplicon data. *Nature Methods*, 13, 581–583.
+- q2-boots（ブートストラップ多様性を使用した場合）: Keefe, C.R., et al. (2025). Bootstrapped rarefaction outperforms single rarefaction for alpha and beta diversity estimation. *F1000Research*.
 
 ## ライセンス
 

@@ -10,12 +10,12 @@
 | ルール | 詳細 |
 |--------|------|
 | 区切り文字 | タブ（`\t`） |
-| 1列目 | `#SampleID`（identifier column） |
+| 1 列目 | `#SampleID`（identifier column） |
 | コメント行 | 行頭が `#` の行は無視される |
-| ID制限 | 36文字以内、ASCII (A-Z, a-z, 0-9, `.`, `-`) 推奨 |
+| ID 制限 | 36 文字以内、ASCII (A-Z, a-z, 0-9, `.`, `-`) 推奨 |
 | 空セル | "missing data" とみなされる（`"NA"` とは異なる） |
 | 型推定 | 数字のみ → numeric、文字含む → categorical |
-| 型明示 | 2行1列目に `#q2:types` と記載 |
+| 型明示 | 2 行 1 列目に `#q2:types` と記載 |
 
 ## numeric でサポートされる値
 
@@ -55,4 +55,23 @@ qiime metadata tabulate \
   --o-visualization metadata-check.qzv
 ```
 
-また、[Keemei](https://keemei.qiime2.org/) という Google Sheets アドオンでも検証が可能。
+また、[Keemei](https://keemei.qiime2.org/) という Google Sheets アドオンでも検証が可能。列のデータ型や値の範囲、ID の重複などを GUI 上で確認できる。
+
+---
+
+## 2026.4 のメタデータパラメータ名統一について
+
+QIIME 2 2026.4 のアップデートにより、複数のプラグインにわたってメタデータを指定する引数名が `--m-metadata-file` に統一された。
+
+**影響を受ける可能性のある場面**:
+- `--m-sample-metadata-file` などのプラグイン固有の引数名を使っていた場合
+- 旧バージョンのスクリプトを 2026.4 以降の環境で実行する場合
+
+**対処法**: エラーが出た場合は `--help` フラグで現在の引数名を確認する。
+
+```bash
+# 例：alpha-group-significance の最新の引数を確認
+qiime diversity alpha-group-significance --help
+```
+
+> **Note**: CLI のコマンド構造自体は変わっておらず、引数名のみの変更のため、`--help` で確認すれば容易に対応できる。
