@@ -50,6 +50,7 @@ docs/
 ├── 21_troubleshooting.md       # トラブルシューティング
 ├── 22_differential_abundance.md # 差次的存在量解析（ANCOM-BC2）（NEW）
 ├── 23_bootstrapped_diversity.md # ブートストラップ多様性解析（q2-boots）（NEW）
+├── 24_automation.md            # 解析の自動化 — AI エージェントと seq2pipe（NEW）
 ├── appendix_metadata.md        # Appendix: メタデータ仕様
 ├── appendix_changelog.md       # 変更履歴
 └── figures/                    # 図・ダイアグラム
